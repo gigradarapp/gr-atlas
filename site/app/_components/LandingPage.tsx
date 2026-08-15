@@ -114,38 +114,66 @@ export default function Home() {
 
       <section className="problem-solution" id="why-atlas">
         <header className="problem-solution-heading">
-          <span>01 / THE OPERATING PROBLEM</span>
-          <h2>A decision should not begin with<br /><em>document hunting.</em></h2>
-          <p>Before an operator backs a venue, event, partnership, or cultural asset, the critical facts are often trapped across contracts, reports, spreadsheets, and conversations.</p>
+          <span>01 / THE DATA PROBLEM</span>
+          <h2>Culture data lives everywhere.<br /><em>Context should not.</em></h2>
+          <p>Venue, rights, finance, partner, and audience records sit across separate systems, documents, and counterparties. No single operating view connects them.</p>
         </header>
         <div className="problem-solution-flow">
           <article className="problem-state problem-state-fragmented">
-            <div className="problem-state-label"><span>Before Atlas</span><small>Fragmented evidence</small></div>
+            <div className="problem-state-label"><span>Before Atlas</span><small>Sharded source data</small></div>
             <div className="evidence-fragments">
-              <div><span>VALUATION SHEET</span><strong>S$1.24m reported value</strong><small>Last reviewed 93 days ago</small></div>
-              <div><span>RIGHTS ADDENDUM</span><strong>Territory terms</strong><small>Expiry not extracted</small></div>
-              <div><span>PARTNER MESSAGE</span><strong>Artist confirmation</strong><small>Commercial terms unclear</small></div>
-              <div><span>EVENT BRIEF</span><strong>Season launch</strong><small>Budget version conflict</small></div>
+              <div><span>VENUE SYSTEM</span><strong>Capacity + booking signals</strong><small>Separate operator system</small></div>
+              <div><span>RIGHTS FOLDER</span><strong>Territory + expiry terms</strong><small>Contract PDF / counsel</small></div>
+              <div><span>PARTNER INBOX</span><strong>Artist commitments</strong><small>Conversation thread</small></div>
+              <div><span>FINANCE WORKBOOK</span><strong>Reported asset value</strong><small>Local spreadsheet</small></div>
             </div>
-            <p>Teams reconstruct the truth by hand—often when a commitment is already due.</p>
+            <p>The data is distributed. The context is rebuilt by hand.</p>
           </article>
-          <div className="problem-solution-arrow" aria-hidden="true"><span>ATLAS</span><i>→</i><small>link evidence<br />to decision</small></div>
+          <div className="problem-solution-arrow" aria-hidden="true"><span>AGENTIC ATLAS</span><i>→</i><small>aggregate · link<br />· surface</small></div>
           <article className="problem-state problem-state-connected">
-            <div className="problem-state-label"><span>With Atlas today</span><small>Decision-ready view</small></div>
+            <div className="problem-state-label"><span>With Buzo Atlas</span><small>Shared operating context</small></div>
             <div className="decision-brief-card">
-              <span>ACTIVATION BRIEF / HUMAN REVIEW</span>
-              <strong>Moonphase Assembly</strong>
-              <div><b>FACTS LINKED</b><b>RISKS FLAGGED</b><b>ASSUMPTIONS LABELLED</b></div>
-              <p>Allocate venue capacity only after rights, partner commitments, and stale valuation evidence are reviewed.</p>
-              <em><i /> Ready for operator decision</em>
+              <span>AGENTIC EVIDENCE LAYER / HUMAN REVIEW</span>
+              <strong>One connected context</strong>
+              <div><b>SOURCES AGGREGATED</b><b>RELATIONSHIPS LINKED</b><b>UNCERTAINTY VISIBLE</b></div>
+              <p>Atlas aggregates available records into shared context, then agents surface evidence, gaps, and dependencies for human review.</p>
+              <em><i /> Ready to investigate and decide</em>
             </div>
-            <p>Atlas creates a traceable decision trail. Humans still approve the commitment.</p>
+            <p>Atlas does not replace source systems. It connects their operational context and keeps uncertainty visible.</p>
           </article>
         </div>
       </section>
 
+      <section className="agentic-office" id="agentic-office">
+        <div className="agentic-office-heading">
+          <span>02 / THE AGENTIC FAMILY OFFICE</span>
+          <h2>The family office,<br /><em>rewired for agency.</em></h2>
+          <p>Legacy family offices preserve wealth by collecting assets. Buzo Atlas helps operators connect the context around those assets—so every decision can strengthen more than one part of the estate.</p>
+        </div>
+        <div className="agentic-office-shift">
+          <article className="office-model office-model-legacy">
+            <span>THE LEGACY MODEL</span>
+            <h3>Assets are held.<br />Context is held <em>apart.</em></h3>
+            <p>Rights, capital, venues, partnerships, and cultural IP may sit within the same estate, but their information remains distributed across teams, advisors, and systems.</p>
+            <div><b>RIGHTS</b><b>CAPITAL</b><b>CULTURE</b><b>RELATIONSHIPS</b></div>
+          </article>
+          <div className="agentic-office-arrow" aria-hidden="true"><span>BUZO ATLAS</span><i>→</i><small>an intelligence layer<br />across the estate</small></div>
+          <article className="office-model office-model-agentic">
+            <span>THE AGENTIC MODEL</span>
+            <h3>Private wealth becomes<br /><em>private intelligence.</em></h3>
+            <p>Atlas aggregates source context, while evidence-bounded agents link relationships, surface dependencies, and prepare the next decision for human judgment.</p>
+            <div><b>AGGREGATE</b><b>LINK</b><b>LEARN</b></div>
+          </article>
+        </div>
+        <div className="agentic-office-outcomes">
+          <p><span>01</span> A right can activate a venue.</p>
+          <p><span>02</span> A partnership can strengthen an original.</p>
+          <p><span>03</span> Every reviewed decision builds institutional memory.</p>
+        </div>
+      </section>
+
       <section className="partnerships" id="partnerships">
-        <div className="section-heading dark-ink"><span>02 / STRATEGIC PARTNERSHIPS</span><h2>Relationships are an<br /><em>operating advantage.</em></h2></div>
+        <div className="section-heading dark-ink"><span>03 / STRATEGIC PARTNERSHIPS</span><h2>Relationships are an<br /><em>operating advantage.</em></h2></div>
         <div className="partnership-layout">
           <div className="relationship-map" aria-label="Partnership relationship map">
             <div className="map-orbit orbit-a" /><div className="map-orbit orbit-b" /><div className="map-orbit orbit-c" />
@@ -167,7 +195,7 @@ export default function Home() {
       <section className="originals" id="originals">
         <div className="originals-image" />
         <div className="originals-scrim" />
-        <div className="originals-top"><span>03 / BUZO ORIGINALS</span><span>OWNED · CO-OWNED · LICENSED</span></div>
+        <div className="originals-top"><span>04 / BUZO ORIGINALS</span><span>OWNED · CO-OWNED · LICENSED</span></div>
         <div className="originals-main">
           <p>ORIGINAL FORMAT 001</p>
           <h2>Night<br /><em>Bloom</em></h2>
@@ -181,7 +209,7 @@ export default function Home() {
       </section>
 
       <section className="collection" id="collection">
-        <div className="collection-heading"><div><span>04 / DIGITAL ART</span><h2>A collection with<br /><em>rights attached.</em></h2></div><p>We treat digital artworks as cultural assets with clear provenance, exhibition and commercial rights—not token speculation.</p></div>
+        <div className="collection-heading"><div><span>05 / DIGITAL ART</span><h2>A collection with<br /><em>rights attached.</em></h2></div><p>We treat digital artworks as cultural assets with clear provenance, exhibition and commercial rights—not token speculation.</p></div>
         <div className="art-rail" ref={artRailRef}>
           {artworks.map((work, index) => (
             <article className="art-card" key={work.title}>
@@ -194,7 +222,7 @@ export default function Home() {
       </section>
 
       <section className="technology" id="technology">
-        <div className="section-heading"><span>05 / PROPRIETARY CONCIERGE IP + TECHNOLOGY</span><h2>The intelligence<br /><em>beneath the experience.</em></h2></div>
+        <div className="section-heading"><span>06 / PROPRIETARY CONCIERGE IP + TECHNOLOGY</span><h2>The intelligence<br /><em>beneath the experience.</em></h2></div>
         <div className="bento-grid">
           <article className="bento-card bento-agent">
             <span className="bento-label">AGENT LAYER</span>
