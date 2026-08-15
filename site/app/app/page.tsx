@@ -42,7 +42,10 @@ export default function AtlasDashboard() {
     <main className={`atlas-app ${agentOpen ? "atlas-agent-is-open" : ""}`}>
       <aside className={`atlas-sidebar ${navOpen ? "is-open" : ""}`}>
         <div className="atlas-brand-row">
-          <span className="atlas-brand-glyph" aria-hidden="true"><span>B</span></span>
+          <span className="atlas-brand-glyph" aria-hidden="true">
+            <span>B</span>
+            <span className="atlas-brand-moon-track"><span className="atlas-brand-moon" /></span>
+          </span>
           <strong>BUZO ATLAS</strong>
         </div>
         <nav className="atlas-section-nav" aria-label="Atlas workspaces">
