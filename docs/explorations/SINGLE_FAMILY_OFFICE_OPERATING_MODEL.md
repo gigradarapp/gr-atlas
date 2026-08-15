@@ -141,5 +141,6 @@ Atlas should therefore validate the initial customer profile before generalizing
 
 ## Related exploration
 
+- [Buzo Originals Cultural-Asset Thesis](BUZO_ORIGINALS_CULTURAL_ASSET_THESIS.md)
 - [Buzo Foundational Strategy Q&A](FOUNDATIONAL_QNA.md)
 - [Bandwagon × Buzo × Buzo Atlas Synergy](BANDWAGON_SYNERGY.md)
