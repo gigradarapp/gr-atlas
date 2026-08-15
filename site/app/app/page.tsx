@@ -44,7 +44,6 @@ export default function AtlasDashboard() {
         <div className="atlas-brand-row">
           <span className="atlas-brand-glyph" aria-hidden="true">
             <span>B</span>
-            <span className="atlas-brand-moon-track"><span className="atlas-brand-moon" /></span>
           </span>
           <strong>BUZO ATLAS</strong>
         </div>
