@@ -141,4 +141,5 @@ Atlas should therefore validate the initial customer profile before generalizing
 
 ## Related exploration
 
+- [Buzo Foundational Strategy Q&A](FOUNDATIONAL_QNA.md)
 - [Bandwagon × Buzo × Buzo Atlas Synergy](BANDWAGON_SYNERGY.md)
