@@ -53,6 +53,7 @@ Buzo Atlas is not yet a legally established family office, investment fund, regu
 
 ## Documentation
 
+- [Product requirements](PRD.md)
 - [Current product thesis](docs/PRODUCT_THESIS.md)
 - [Legacy strategy archive](docs/legacy/README.md)
 
