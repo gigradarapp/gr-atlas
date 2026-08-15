@@ -53,12 +53,18 @@ body:has(.atlas-app) { background: var(--atlas-bg); }
 .atlas-mobile-menu { display: none; }
 .atlas-page { max-width: 1600px; margin: 0 auto; padding: 16px; animation: atlasFade .28s ease both; }
 
-.atlas-console-header { min-height: 72px; display: flex; align-items: center; padding: 18px 22px; border: 1px solid var(--atlas-line-strong); border-radius: 14px 14px 0 0; background: rgba(17,19,15,.72); }
+.atlas-console-header { min-height: 96px; display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 18px 22px; border: 1px solid var(--atlas-line-strong); border-radius: 14px 14px 0 0; background: rgba(17,19,15,.72); }
 .atlas-console-title-wrap { min-width:0; }
 .atlas-console-title-wrap .atlas-eyebrow { white-space:nowrap; }
 .atlas-console-title-wrap { display: flex; align-items: center; gap: 15px; }
 .atlas-eyebrow,.atlas-mono-label { margin: 0; color: var(--atlas-muted); font: 500 8px var(--atlas-mono); letter-spacing: .11em; text-transform: uppercase; }
 .atlas-console-title { margin: 4px 0 0; font-size: 20px; font-weight: 560; letter-spacing: -.03em; }
+.atlas-aum-summary { display: flex; flex: 0 0 auto; margin: 0; border: 1px solid var(--atlas-line); border-radius: 8px; overflow: hidden; }
+.atlas-aum-summary>div { min-width: 108px; padding: 10px 14px; }
+.atlas-aum-summary>div+div { border-left: 1px solid var(--atlas-line); }
+.atlas-aum-summary dt { color: var(--atlas-muted); font: 500 7px var(--atlas-mono); letter-spacing: .1em; text-transform: uppercase; }
+.atlas-aum-summary dd { margin: 6px 0 0; font: 400 18px var(--atlas-serif); }
+.atlas-aum-summary>div+div dd { color: var(--atlas-muted); font: 500 8px var(--atlas-mono); }
 .atlas-portfolio-strip { display: grid; grid-template-columns: 1.1fr repeat(4, 1fr); border: 1px solid var(--atlas-line-strong); border-top: 0; background: rgba(17,19,15,.67); }
 .atlas-strip-intro,.atlas-mechanism-card { min-height: 108px; padding: 18px; border-right: 1px solid var(--atlas-line); }
 .atlas-mechanism-card:last-child { border: 0; }
@@ -339,6 +345,7 @@ body:has(.atlas-app) { background: var(--atlas-bg); }
   .atlas-console-header { min-height: 80px; padding: 13px; }
   .atlas-console-meta { display: none; }
   .atlas-console-title { font-size: 19px; }
+  .atlas-aum-summary { display: none; }
   .atlas-portfolio-strip { grid-template-columns: 1fr 1fr; }
   .atlas-strip-intro { grid-column: 1/-1; }
   .atlas-mechanism-card:nth-child(odd) { border-right: 0; }

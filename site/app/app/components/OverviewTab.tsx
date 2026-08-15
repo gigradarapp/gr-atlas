@@ -2,30 +2,30 @@ const portfolioMechanisms = [
   {
     index: "01",
     name: "Strategic partnerships",
-    metric: "12",
-    detail: "7 ready · 3 in review",
-    signal: "+18%",
+    value: "$1.20m",
+    detail: "Contracted commitments",
+    allocation: "10%",
   },
   {
     index: "02",
     name: "Buzo Originals",
-    metric: "06",
-    detail: "4 active rights windows",
-    signal: "+28%",
+    value: "$4.35m",
+    detail: "Rights & format portfolio",
+    allocation: "35%",
   },
   {
     index: "03",
     name: "Digital art",
-    metric: "24",
-    detail: "21 rights-complete works",
-    signal: "+09%",
+    value: "$2.65m",
+    detail: "Art & licensing rights",
+    allocation: "21%",
   },
   {
     index: "04",
     name: "Concierge IP + technology",
-    metric: "09",
-    detail: "5 reusable agent systems",
-    signal: "+31%",
+    value: "$4.40m",
+    detail: "Technology & data IP",
+    allocation: "34%",
   },
 ];
 
@@ -65,28 +65,38 @@ export default function OverviewTab() {
         <div className="atlas-console-title-wrap">
           <span className="atlas-live-dot" aria-hidden="true" />
           <div>
-            <p className="atlas-eyebrow">Atlas / Cultural intelligence</p>
+            <p className="atlas-eyebrow">Atlas / Cultural capital intelligence</p>
             <h1 className="atlas-console-title" id="atlas-overview-title">
-              Portfolio operating view
+              Capital under stewardship
             </h1>
           </div>
         </div>
+        <dl className="atlas-aum-summary" aria-label="Fictional portfolio value summary">
+          <div>
+            <dt>Demo AUM</dt>
+            <dd>$12.60m</dd>
+          </div>
+          <div>
+            <dt>Basis</dt>
+            <dd>Reported value</dd>
+          </div>
+        </dl>
       </header>
 
       <div className="atlas-portfolio-strip" aria-label="Portfolio summary">
         <div className="atlas-strip-intro">
-          <span className="atlas-mono-label">Portfolio mechanisms / 04</span>
-          <strong>One agentic family office.</strong>
+          <span className="atlas-mono-label">Capital allocation / 04 mechanisms</span>
+          <strong>One view of cultural capital.</strong>
         </div>
         {portfolioMechanisms.map((mechanism) => (
           <article className="atlas-mechanism-card" key={mechanism.index}>
             <div className="atlas-card-index-row">
               <span className="atlas-card-index">{mechanism.index}</span>
-              <span className="atlas-positive-signal">{mechanism.signal}</span>
+              <span className="atlas-positive-signal">{mechanism.allocation}</span>
             </div>
             <p>{mechanism.name}</p>
             <div className="atlas-mechanism-metric">
-              <strong>{mechanism.metric}</strong>
+              <strong>{mechanism.value}</strong>
               <span>{mechanism.detail}</span>
             </div>
           </article>
@@ -138,8 +148,8 @@ export default function OverviewTab() {
               The next season is <em>coalescing.</em>
             </h2>
             <p>
-              Atlas connects intent, venue capacity, partner commitments and owned cultural rights into a
-              decision-ready operating view.
+              Atlas compares cultural assets, rights, commitments and technology in one allocation view—so
+              operators can decide where capital, attention and relationships go next.
             </p>
           </div>
 
