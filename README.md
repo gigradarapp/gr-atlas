@@ -38,6 +38,8 @@ Buzo already covers the early consumer discovery and planning loop. Atlas explor
 
 This repository begins as a hackathon prototype. Portfolio ingestion, risk analysis, family-office integrations, and Buzo demand-signal integration should be treated as planned work until implemented and demonstrated.
 
+The concept's [original inspiration](docs/ORIGINAL_INSPIRATION.md) is preserved separately from the evolving product thesis.
+
 ## Related Buzo repositories
 
 - [gr-frontend](https://github.com/gigradarapp/gr-frontend) — consumer app
