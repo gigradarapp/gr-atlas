@@ -60,7 +60,13 @@ export default function DigitalArtTab() {
         </div>
 
         <aside className="atlas-art-selected-work" aria-live="polite">
-          <img src={selectedArtwork.image} alt={`${selectedArtwork.title}, fictional collection artwork`} />
+          <div className="atlas-art-selected-image">
+            <img src={selectedArtwork.image} alt={`${selectedArtwork.title}, fictional collection artwork`} />
+            <div className="atlas-art-investor-count" aria-label={`${selectedArtwork.investors} investors`}>
+              <strong>{selectedArtwork.investors}</strong>
+              <span>investors</span>
+            </div>
+          </div>
           <div className="atlas-art-selected-copy">
             <p className="atlas-mono-label">Selected work / {selectedArtwork.id}</p>
             <h2>{selectedArtwork.title}</h2>

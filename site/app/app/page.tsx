@@ -1,12 +1,13 @@
 "use client";
 
-import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import OverviewTab from "./components/OverviewTab";
 import PartnershipsTab from "./components/PartnershipsTab";
 import OriginalsTab from "./components/OriginalsTab";
 import DigitalArtTab from "./components/DigitalArtTab";
 import TechnologyTab from "./components/TechnologyTab";
+import AtlasChat from "./components/AtlasChat";
+import AtlasAgentHealth from "./components/AtlasAgentHealth";
 import "./atlas.css";
 
 const tabs = [
@@ -39,6 +40,18 @@ export default function AtlasDashboard() {
     setNavOpen(false);
   };
 
+  useEffect(() => {
+    const onKeyDown = (event: KeyboardEvent) => {
+      if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === "k") {
+        event.preventDefault();
+        setAgentOpen((current) => !current);
+      }
+    };
+
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, []);
+
   return (
     <main className={`atlas-app ${agentOpen ? "atlas-agent-is-open" : ""}`}>
       <aside className={`atlas-sidebar ${navOpen ? "is-open" : ""}`}>
@@ -66,12 +79,8 @@ export default function AtlasDashboard() {
       <section className="atlas-workspace">
         <header className="atlas-appbar">
           <button className="atlas-mobile-menu" type="button" aria-label="Toggle workspace navigation" aria-expanded={navOpen} onClick={() => setNavOpen(!navOpen)}>☰</button>
-          <div className="atlas-appbar-start">
-            <Link className="atlas-back-link" href="/">← Landing</Link>
-            <div className="atlas-breadcrumb"><span>ATLAS</span><i>/</i><strong>{activeLabel}</strong></div>
-          </div>
-          <div className="atlas-model-meta"><span>LIVE MODEL</span><span>SINGAPORE</span><span>08:42 SGT</span></div>
-          <button className="atlas-agent-trigger" type="button" onClick={() => setAgentOpen(true)}><span className="atlas-live-dot" /> Ask Atlas <b>⌘ K</b></button>
+          <div className="atlas-breadcrumb"><span>ATLAS</span><i>/</i><strong>{activeLabel}</strong></div>
+          <AtlasAgentHealth />
         </header>
 
         <div className="atlas-page" key={activeTab}>
@@ -87,19 +96,12 @@ export default function AtlasDashboard() {
         )}
       </section>
 
-      <aside className="atlas-agent-drawer" aria-hidden={!agentOpen}>
-        <header><div><span>ATLAS AGENT / 03</span><h2>Prepare the next move.</h2></div><button type="button" aria-label="Close Atlas agent" onClick={() => setAgentOpen(false)}>×</button></header>
-        <div className="atlas-agent-context"><span>ACTIVE CONTEXT</span><strong>{activeLabel}</strong><p>9 evidence-linked records · 2 unresolved dependencies</p></div>
-        <div className="atlas-agent-plan">
-          <div><i>01</i><span><b>Learn</b>Reconcile the latest rights, partner and operating records.</span><em>DONE</em></div>
-          <div><i>02</i><span><b>Coordinate</b>Identify owners and decisions before the activation window.</span><em>ACTIVE</em></div>
-          <div><i>03</i><span><b>Allocate</b>Prepare options for capital, attention, technology and relationships.</span><em>NEXT</em></div>
-        </div>
-        <div className="atlas-agent-output"><span>DRAFT BRIEF</span><p>Moonphase Assembly can move forward if the venue option and regional exhibition rights are resolved within 21 days.</p><div><b>87%</b> confidence <b>9</b> sources <b>2</b> assumptions</div></div>
-        <div className="atlas-review-actions"><button type="button">Needs review</button><button type="button">Prepare for approval →</button></div>
-        <label className="atlas-agent-input"><span>✦</span><input aria-label="Ask Atlas" placeholder="Ask a portfolio question…" /><button type="button">↑</button></label>
-        <p className="atlas-agent-boundary">Fictional wireframe · Human review required · Not investment advice</p>
-      </aside>
+      <AtlasChat
+        open={agentOpen}
+        onClose={() => setAgentOpen(false)}
+        workspace={activeLabel ?? "Command centre"}
+        tabId={activeTab}
+      />
       {agentOpen && <button className="atlas-drawer-backdrop" type="button" aria-label="Close agent panel" onClick={() => setAgentOpen(false)} />}
     </main>
   );

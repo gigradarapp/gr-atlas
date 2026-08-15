@@ -1,3 +1,16 @@
+import type { ReactNode } from "react";
+import {
+  aumOverTime,
+  chartHeight,
+  chartMax,
+  commandCentreKpis,
+  earningsByYear,
+  financialsByYear,
+  investorGrowth,
+  investorsByMechanism,
+  signupsByYear,
+} from "./commandCentreMetrics";
+
 const portfolioMechanisms = [
   {
     index: "01",
@@ -29,36 +42,43 @@ const portfolioMechanisms = [
   },
 ];
 
-const demandBars = [37, 44, 41, 58, 49, 66, 62, 79, 71, 86, 91, 100];
-
-const operatingFeed = [
-  {
-    index: "01",
-    stage: "Learn",
-    status: "Reconciled",
-    copy: "A new venue report was matched against the programme, provenance and rights registers.",
-  },
-  {
-    index: "02",
-    stage: "Coordinate",
-    status: "Decision flagged",
-    copy: "Artist, venue and distribution commitments are aligned for the next production window.",
-  },
-  {
-    index: "03",
-    stage: "Allocate",
-    status: "Human review",
-    copy: "A seasonal activation brief is ready for an operator to approve, revise or defer.",
-  },
-];
-
-const evidenceItems = [
-  ["Venue capacity report", "Verified", "Today · 08:31"],
-  ["Artist rights schedule", "Verified", "Yesterday · 19:12"],
-  ["Distribution commitment", "Review", "Yesterday · 17:44"],
-] as const;
+function ChartPanel({
+  title,
+  meta,
+  badge,
+  children,
+  wide = false,
+}: {
+  title: string;
+  meta: string;
+  badge?: string;
+  children: ReactNode;
+  wide?: boolean;
+}) {
+  return (
+    <article className={`atlas-chart-panel${wide ? " atlas-chart-panel-wide" : ""}`}>
+      <div className="atlas-chart-panel-head">
+        <div>
+          <span>{title}</span>
+          <strong>{meta}</strong>
+        </div>
+        {badge ? <em>{badge}</em> : null}
+      </div>
+      {children}
+    </article>
+  );
+}
 
 export default function OverviewTab() {
+  const aumMax = chartMax(aumOverTime.map((point) => point.value));
+  const investorMax = chartMax(investorGrowth.map((point) => point.value));
+  const mechanismMax = chartMax(investorsByMechanism.map((point) => point.value));
+  const signupMax = chartMax(signupsByYear.map((point) => point.value));
+  const earningsMax = chartMax(earningsByYear.map((point) => point.value));
+  const financialMax = chartMax(
+    financialsByYear.flatMap((year) => [year.revenue, year.expenses]),
+  );
+
   return (
     <section className="atlas-overview" aria-labelledby="atlas-overview-title">
       <header className="atlas-console-header">
@@ -71,17 +91,44 @@ export default function OverviewTab() {
             </h1>
           </div>
         </div>
-        <dl className="atlas-aum-summary" aria-label="Fictional portfolio value summary">
+        <dl className="atlas-aum-summary" aria-label="Portfolio value summary">
           <div>
-            <dt>Demo AUM</dt>
-            <dd>$12.60m</dd>
+            <dt>AUM</dt>
+            <dd>{commandCentreKpis.aum}</dd>
           </div>
           <div>
-            <dt>Basis</dt>
-            <dd>Reported value</dd>
+            <dt>Investors</dt>
+            <dd>{commandCentreKpis.totalInvestors}</dd>
           </div>
         </dl>
       </header>
+
+      <dl className="atlas-kpi-strip" aria-label="Portfolio metrics">
+        <div>
+          <dt>Total investors</dt>
+          <dd>{commandCentreKpis.totalInvestors}</dd>
+        </div>
+        <div>
+          <dt>Revenue</dt>
+          <dd>{commandCentreKpis.revenue}</dd>
+        </div>
+        <div>
+          <dt>Expenses</dt>
+          <dd>{commandCentreKpis.expenses}</dd>
+        </div>
+        <div>
+          <dt>Net earnings</dt>
+          <dd>{commandCentreKpis.netEarnings}</dd>
+        </div>
+        <div>
+          <dt>Signups</dt>
+          <dd>{commandCentreKpis.signups}</dd>
+        </div>
+        <div>
+          <dt>Shareholders</dt>
+          <dd>{commandCentreKpis.shareholders}</dd>
+        </div>
+      </dl>
 
       <div className="atlas-portfolio-strip" aria-label="Portfolio summary">
         <div className="atlas-strip-intro">
@@ -103,131 +150,102 @@ export default function OverviewTab() {
         ))}
       </div>
 
-      <div className="atlas-intelligence-grid">
-        <article className="atlas-active-right">
-          <div className="atlas-panel-kicker">
-            <span>Active cultural right</span>
-            <span>01</span>
-          </div>
-
-          <div className="atlas-right-heading">
-            <h2>Moonphase Assembly</h2>
-            <p>Seasonal event IP / partnership atlas</p>
-          </div>
-
-          <ul className="atlas-signal-tags" aria-label="Active partner and demand signals">
-            <li><span className="atlas-signal-dot atlas-signal-dot-partner" aria-hidden="true" />Partner · Collective Minds</li>
-            <li><span className="atlas-signal-dot atlas-signal-dot-demand" aria-hidden="true" />Demand · Rising</li>
-            <li><span className="atlas-signal-dot atlas-signal-dot-rights" aria-hidden="true" />Rights · Window open</li>
-          </ul>
-
-          <dl className="atlas-right-metrics">
-            <div>
-              <dt>Partner readiness</dt>
-              <dd>86%</dd>
-            </div>
-            <div>
-              <dt>Rights window</dt>
-              <dd>47 days</dd>
-            </div>
-            <div>
-              <dt>Evidence confidence</dt>
-              <dd>92%</dd>
-            </div>
-          </dl>
-        </article>
-
-        <article className="atlas-allocation-brief">
-          <div className="atlas-panel-kicker">
-            <span>Allocation brief</span>
-            <span>Agent / 03</span>
-          </div>
-
-          <div className="atlas-brief-copy">
-            <h2>
-              The next season is <em>coalescing.</em>
-            </h2>
-            <p>
-              Atlas compares cultural assets, rights, commitments and technology in one allocation view—so
-              operators can decide where capital, attention and relationships go next.
-            </p>
-          </div>
-
-          <div className="atlas-demand-chart" aria-label="Demand signal trend increased 28 percent">
-            <div className="atlas-demand-chart-topline">
-              <span>Audience intent / 12 weeks</span>
-              <strong>Demand signal +28%</strong>
-            </div>
-            <div className="atlas-bars" aria-hidden="true">
-              {demandBars.map((height, index) => (
-                <span key={index} style={{ height: `${height}%` }} />
-              ))}
-            </div>
-          </div>
-
-          <div className="atlas-operating-feed" aria-label="Agent operating feed">
-            {operatingFeed.map((item) => (
-              <section className="atlas-feed-item" key={item.index}>
-                <span className="atlas-feed-index">{item.index}</span>
-                <div>
-                  <div className="atlas-feed-heading">
-                    <h3>{item.stage}</h3>
-                    <span>{item.status}</span>
-                  </div>
-                  <p>{item.copy}</p>
+      <div className="atlas-metrics-dashboard">
+        <ChartPanel title="AUM over time" meta="Quarterly reported value" badge={`Now ${commandCentreKpis.aum}`} wide>
+          <div className="atlas-chart-bars atlas-chart-bars-tall" aria-label="AUM over time by quarter">
+            {aumOverTime.map((point) => (
+              <div className="atlas-chart-bar-col" key={point.label}>
+                <div className="atlas-chart-bar-track">
+                  <span className="atlas-chart-bar atlas-chart-bar-aum" style={{ height: chartHeight(point.value, aumMax) }} />
                 </div>
-              </section>
-            ))}
-          </div>
-        </article>
-      </div>
-
-      <div className="atlas-review-grid">
-        <article className="atlas-evidence-panel">
-          <div className="atlas-panel-kicker">
-            <span>Evidence register</span>
-            <span>18 linked</span>
-          </div>
-          <div className="atlas-evidence-list" role="list">
-            {evidenceItems.map(([name, status, time]) => (
-              <div className="atlas-evidence-row" role="listitem" key={name}>
-                <span className="atlas-evidence-mark" aria-hidden="true" />
-                <strong>{name}</strong>
-                <span className={status === "Review" ? "atlas-status-review" : "atlas-status-verified"}>
-                  {status}
-                </span>
-                <time>{time}</time>
+                <small>{point.label}</small>
+                <strong>{point.display}</strong>
               </div>
             ))}
           </div>
-        </article>
+        </ChartPanel>
 
-        <aside className="atlas-review-panel" aria-label="Human review queue">
-          <div className="atlas-panel-kicker">
-            <span>Human review</span>
-            <span>Required</span>
+        <ChartPanel title="Total investors" meta="Cumulative growth" badge={`${commandCentreKpis.totalInvestors} total`}>
+          <div className="atlas-chart-bars" aria-label="Total investors over time">
+            {investorGrowth.map((point) => (
+              <div className="atlas-chart-bar-col" key={point.label}>
+                <div className="atlas-chart-bar-track">
+                  <span className="atlas-chart-bar atlas-chart-bar-investors" style={{ height: chartHeight(point.value, investorMax) }} />
+                </div>
+                <small>{point.label}</small>
+              </div>
+            ))}
           </div>
-          <div className="atlas-review-counts">
-            <div>
-              <strong>03</strong>
-              <span>Decisions queued</span>
-            </div>
-            <div>
-              <strong>02</strong>
-              <span>Rights conflicts</span>
-            </div>
+        </ChartPanel>
+
+        <ChartPanel title="Investors by mechanism" meta="Current split across portfolio">
+          <div className="atlas-chart-bars" aria-label="Investors by portfolio mechanism">
+            {investorsByMechanism.map((point) => (
+              <div className="atlas-chart-bar-col atlas-chart-bar-col-wide" key={point.label}>
+                <div className="atlas-chart-bar-track">
+                  <span className="atlas-chart-bar atlas-chart-bar-investors" style={{ height: chartHeight(point.value, mechanismMax) }} />
+                </div>
+                <small>{point.label}</small>
+                <strong>{point.value}</strong>
+              </div>
+            ))}
           </div>
-          <button className="atlas-review-button" type="button">
-            Open review room <span aria-hidden="true">↗</span>
-          </button>
-        </aside>
+        </ChartPanel>
+
+        <ChartPanel title="Revenue vs expenses" meta="Buzo Originals by year">
+          <div className="atlas-chart-legend">
+            <span><i className="atlas-chart-legend-revenue" aria-hidden="true" />Revenue</span>
+            <span><i className="atlas-chart-legend-expense" aria-hidden="true" />Expenses</span>
+          </div>
+          <div className="atlas-chart-grouped" aria-label="Revenue versus expenses by year">
+            {financialsByYear.map((year) => (
+              <div className="atlas-chart-group" key={year.label}>
+                <div className="atlas-chart-group-bars">
+                  <span
+                    className="atlas-chart-bar-revenue"
+                    style={{ height: chartHeight(year.revenue, financialMax) }}
+                    title={`Revenue ${year.revenue}`}
+                  />
+                  <span
+                    className="atlas-chart-bar-expense"
+                    style={{ height: chartHeight(year.expenses, financialMax) }}
+                    title={`Expenses ${year.expenses}`}
+                  />
+                </div>
+                <small>{year.label}</small>
+              </div>
+            ))}
+          </div>
+        </ChartPanel>
+
+        <ChartPanel title="Signups" meta="Event registrations by year" badge={commandCentreKpis.signups}>
+          <div className="atlas-chart-bars" aria-label="Signups by year">
+            {signupsByYear.map((point) => (
+              <div className="atlas-chart-bar-col atlas-chart-bar-col-wide" key={point.label}>
+                <div className="atlas-chart-bar-track">
+                  <span className="atlas-chart-bar atlas-chart-bar-signups" style={{ height: chartHeight(point.value, signupMax) }} />
+                </div>
+                <small>{point.label}</small>
+                <strong>{point.display}</strong>
+              </div>
+            ))}
+          </div>
+        </ChartPanel>
+
+        <ChartPanel title="Net earnings" meta="Buzo Originals by year">
+          <div className="atlas-chart-bars" aria-label="Net earnings by year">
+            {earningsByYear.map((point) => (
+              <div className="atlas-chart-bar-col atlas-chart-bar-col-wide" key={point.label}>
+                <div className="atlas-chart-bar-track">
+                  <span className="atlas-chart-bar atlas-chart-bar-earnings" style={{ height: chartHeight(point.value, earningsMax) }} />
+                </div>
+                <small>{point.label}</small>
+                <strong>{point.display}</strong>
+              </div>
+            ))}
+          </div>
+        </ChartPanel>
       </div>
-
-      <footer className="atlas-wireframe-note">
-        <span>Fictional operating data</span>
-        <span>Human-reviewed decisions</span>
-        <span>Not investment advice</span>
-      </footer>
     </section>
   );
 }

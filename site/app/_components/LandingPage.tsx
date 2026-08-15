@@ -63,7 +63,6 @@ export default function Home() {
           <div className="atlas-console">
             <div className="console-top">
               <div className="console-name">Atlas / Agentic Family Office</div>
-              <div className="console-meta">LIVE MODEL · SINGAPORE · 08:42 SGT</div>
             </div>
             <div className="console-body">
               <section className="console-column console-asset">
