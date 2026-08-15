@@ -12,14 +12,7 @@ const artworks = [
 function BrandMark() {
   return (
     <span className="brand-mark" aria-hidden="true">
-      <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="32" cy="32" r="18" fill="currentColor" fillOpacity=".16" />
-        <ellipse cx="32" cy="32" rx="29" ry="10.5" transform="rotate(-24 32 32)" stroke="currentColor" strokeWidth="3.2" />
-        <path d="M25 19V45" stroke="currentColor" strokeWidth="4.2" strokeLinecap="round" />
-        <path d="M27 19H34C39.6 19 42.5 21.8 42.5 25.8C42.5 29.8 39.6 32 34.5 32H27" stroke="currentColor" strokeWidth="4.2" strokeLinecap="round" strokeLinejoin="round" />
-        <path d="M27 32H35C40.6 32 43.5 34.8 43.5 38.8C43.5 42.7 40.6 45 35 45H27" stroke="currentColor" strokeWidth="4.2" strokeLinecap="round" strokeLinejoin="round" />
-        <path d="M9.2 42.8C19.4 50.7 41.4 53.5 54.8 42.3" stroke="currentColor" strokeWidth="3.2" strokeLinecap="round" />
-      </svg>
+      <span>B</span>
     </span>
   );
 }
