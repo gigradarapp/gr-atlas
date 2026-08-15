@@ -232,7 +232,49 @@ body:has(.atlas-app) { background: var(--atlas-bg); }
 .atlas-dependency-item { display:grid; grid-template-columns:1fr 45px auto; gap:10px; align-items:center; padding:11px 0; border-top:1px solid var(--atlas-line); }.atlas-dependency-copy strong { font-size:8px; }.atlas-dependency-copy p { margin:3px 0 0; color:var(--atlas-muted); font-size:7px; }.atlas-dependency-date { color:var(--atlas-muted); font:500 6px var(--atlas-mono); }
 
 /* Digital art */
-.atlas-art-eyebrow { margin:0; color:var(--atlas-muted); font:500 8px var(--atlas-mono); letter-spacing:.11em; text-transform:uppercase; }.atlas-art-summary { min-width:430px; display:grid; grid-template-columns:repeat(4,1fr); align-self:end; border:1px solid var(--atlas-line); }.atlas-art-summary>div { padding:13px; }.atlas-art-summary>div+div { border-left:1px solid var(--atlas-line); }.atlas-art-summary span,.atlas-art-summary small { display:block; color:var(--atlas-muted); font-size:6px; }.atlas-art-summary strong { display:block; margin:8px 0 3px; font:400 20px var(--atlas-serif); }
+.atlas-art-register-header { display:flex; justify-content:space-between; gap:24px; padding:28px 32px; border:1px solid var(--atlas-line-strong); border-radius:16px; background:rgba(17,19,15,.72); }
+.atlas-art-register-intro { max-width:560px; margin:10px 0 0; color:var(--atlas-muted); font-size:11px; line-height:1.6; }
+.atlas-art-register-summary { min-width:360px; margin:0; display:grid; grid-template-columns:repeat(2,1fr); align-self:end; border:1px solid var(--atlas-line); border-radius:10px; overflow:hidden; }
+.atlas-art-register-summary>div { padding:14px 16px; }
+.atlas-art-register-summary>div:nth-child(odd) { border-right:1px solid var(--atlas-line); }
+.atlas-art-register-summary>div:nth-child(-n+2) { border-bottom:1px solid var(--atlas-line); }
+.atlas-art-register-summary dt { color:var(--atlas-muted); font:500 7px var(--atlas-mono); letter-spacing:.08em; text-transform:uppercase; }
+.atlas-art-register-summary dd { margin:8px 0 0; font:400 22px var(--atlas-serif); }
+.atlas-art-register-panel { margin-top:13px; padding:24px 28px; border:1px solid var(--atlas-line-strong); border-radius:14px; background:rgba(17,19,15,.68); }
+.atlas-art-gallery-layout { display:grid; grid-template-columns:minmax(0,1.55fr) minmax(310px,.75fr); gap:14px; margin-top:14px; }
+.atlas-art-gallery { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:10px; }
+.atlas-art-card { position:relative; min-height:240px; overflow:hidden; padding:0; border:1px solid var(--atlas-line); border-radius:10px; background:var(--atlas-panel); color:var(--atlas-text); cursor:pointer; text-align:left; transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease; }
+.atlas-art-card:hover,.atlas-art-card.is-selected { border-color:rgba(223,255,49,.55); box-shadow:0 0 0 1px rgba(223,255,49,.12),0 18px 36px rgba(0,0,0,.28); transform:translateY(-3px); }
+.atlas-art-card img { width:100%; height:100%; position:absolute; inset:0; object-fit:cover; transition:transform .45s ease; }
+.atlas-art-card:hover img,.atlas-art-card.is-selected img { transform:scale(1.06); }
+.atlas-art-card-overlay { position:absolute; inset:0; background:linear-gradient(180deg,transparent 27%,rgba(9,11,8,.92) 100%); }
+.atlas-art-card-copy { position:absolute; inset:auto 0 0; z-index:1; display:grid; gap:4px; padding:13px; }
+.atlas-art-card-copy small { color:rgba(241,239,233,.62); font:500 7px var(--atlas-mono); letter-spacing:.08em; }
+.atlas-art-card-copy strong { font:500 12px/1.15 var(--font-geist-sans),sans-serif; }
+.atlas-art-card-copy em { color:rgba(241,239,233,.68); font-size:8px; font-style:normal; }
+.atlas-art-selected-work { min-height:500px; overflow:hidden; border:1px solid var(--atlas-line-strong); border-radius:12px; background:rgba(17,19,15,.72); }
+.atlas-art-selected-work>img { width:100%; height:270px; display:block; object-fit:cover; }
+.atlas-art-selected-copy { padding:18px; }
+.atlas-art-selected-copy h2 { margin:9px 0 5px; font:400 29px/.95 var(--atlas-serif); letter-spacing:-.03em; }
+.atlas-art-selected-copy>p:not(.atlas-mono-label) { margin:0; color:var(--atlas-muted); font-size:9px; line-height:1.5; }
+.atlas-art-selected-copy dl { margin:18px 0 0; }
+.atlas-art-selected-copy dl>div { display:flex; justify-content:space-between; gap:14px; padding:11px 0; border-top:1px solid var(--atlas-line); }
+.atlas-art-selected-copy dt { color:var(--atlas-muted); font:500 7px var(--atlas-mono); text-transform:uppercase; }
+.atlas-art-selected-copy dd { max-width:58%; margin:0; font-size:9px; text-align:right; }
+.atlas-art-register-panel-head { display:flex; justify-content:space-between; align-items:baseline; gap:16px; margin-bottom:18px; padding-bottom:14px; border-bottom:1px solid var(--atlas-line); }
+.atlas-art-register-panel-head h2 { margin:0; font-size:18px; letter-spacing:-.03em; }
+.atlas-art-register-panel-head span { color:var(--atlas-muted); font:500 7px var(--atlas-mono); letter-spacing:.08em; text-transform:uppercase; }
+.atlas-art-register-table-wrap { overflow-x:auto; }
+.atlas-art-register-table { width:100%; border-collapse:collapse; text-align:left; }
+.atlas-art-register-table th,.atlas-art-register-table td { padding:14px 12px; border-top:1px solid var(--atlas-line); vertical-align:middle; }
+.atlas-art-register-table thead th { border-top:0; color:var(--atlas-muted); font:500 7px var(--atlas-mono); letter-spacing:.08em; text-transform:uppercase; }
+.atlas-art-register-table tbody th { font-weight:520; }
+.atlas-art-register-table tbody td { font-size:11px; }
+.atlas-art-register-table tbody td:nth-child(2) { font:400 18px var(--atlas-serif); }
+.atlas-art-register-table tbody td:nth-child(3),.atlas-art-register-table tbody td:nth-child(4) { color:var(--atlas-lime); font:500 12px var(--atlas-mono); }
+.atlas-art-register-id { display:block; color:var(--atlas-muted); font:500 7px var(--atlas-mono); letter-spacing:.06em; text-transform:uppercase; }
+.atlas-art-register-table tbody th strong { display:block; margin-top:4px; font-size:12px; font-weight:560; }
+.atlas-art-register-artist { display:block; margin-top:4px; color:var(--atlas-muted); font-size:9px; }
 .atlas-art-command-row { display:flex; justify-content:space-between; gap:15px; margin:13px 0; padding:11px; border:1px solid var(--atlas-line); border-radius:9px; background:rgba(17,19,15,.6); }.atlas-art-filter-group { display:flex; gap:6px; flex-wrap:wrap; }.atlas-art-filter,.atlas-art-add-button { padding:8px 10px; border:1px solid var(--atlas-line); border-radius:5px; background:transparent; color:var(--atlas-muted); font-size:7px; cursor:pointer; }.atlas-art-filter-active,.atlas-art-add-button { border-color:rgba(223,255,49,.32); color:var(--atlas-text); background:rgba(223,255,49,.07); }.atlas-art-filter span { margin-left:6px; color:var(--atlas-lime); }
 .atlas-art-primary-grid,.atlas-art-rights-grid,.atlas-art-operations-grid { display:grid; gap:13px; margin-bottom:13px; }.atlas-art-primary-grid { grid-template-columns:1.35fr .65fr; }.atlas-art-rights-grid { grid-template-columns:.75fr 1.25fr; }.atlas-art-operations-grid { grid-template-columns:1fr 1fr .8fr; }
 .atlas-art-inventory,.atlas-art-selected,.atlas-art-provenance,.atlas-art-rights-matrix,.atlas-art-calendar,.atlas-art-valuation,.atlas-art-exceptions,.atlas-art-agent-brief { padding:20px; border:1px solid var(--atlas-line-strong); border-radius:12px; background:rgba(17,19,15,.68); overflow:hidden; }
@@ -325,6 +367,9 @@ body:has(.atlas-app) { background: var(--atlas-bg); }
   .atlas-summary-metrics,.atlas-art-summary { margin-top:25px; min-width:0; }
   .atlas-art-primary-grid,.atlas-art-rights-grid { grid-template-columns:1fr; }
   .atlas-art-operations-grid { grid-template-columns:1fr 1fr; }
+  .atlas-art-gallery-layout { grid-template-columns:1fr; }
+  .atlas-art-selected-work { min-height:0; display:grid; grid-template-columns:220px 1fr; }
+  .atlas-art-selected-work>img { height:100%; min-height:260px; }
   .atlas-art-exceptions { grid-column:1/-1; }
   .atlas-art-agent-brief { grid-template-columns:42px 1fr; }
   .atlas-art-agent-actions { grid-column:2; grid-template-columns:1fr 1fr; }
@@ -389,8 +434,15 @@ body:has(.atlas-app) { background: var(--atlas-bg); }
   .atlas-format-grid { gap:8px; }
   .atlas-section-heading-row { display:block; }
   .atlas-section-note { margin-top:13px; text-align:left; }
-  .atlas-featured-original,.atlas-originals-overview>.atlas-agent-brief { min-height:0; }
-  .atlas-art-command-row { display:block; }
+  .atlas-originals-hero { padding:22px; flex-direction:column; align-items:stretch; }
+  .atlas-originals-metrics-summary { margin-top:18px; min-width:0; width:100%; }
+  .atlas-netflix-card { width:min(190px,58vw); }
+  .atlas-art-register-header { display:block; padding:22px; }
+  .atlas-art-register-summary { margin-top:18px; min-width:0; width:100%; }
+  .atlas-art-gallery { grid-template-columns:1fr 1fr; }
+  .atlas-art-card { min-height:220px; }
+  .atlas-art-selected-work { display:block; }
+  .atlas-art-selected-work>img { height:300px; }
   .atlas-art-add-button { margin-top:10px; }
   .atlas-art-agent-brief { grid-template-columns:1fr; }
   .atlas-art-agent-actions { grid-column:auto; grid-template-columns:1fr; }
