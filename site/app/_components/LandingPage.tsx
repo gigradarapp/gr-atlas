@@ -112,6 +112,38 @@ export default function Home() {
         <p>We apply long-horizon family-office discipline to relationship capital, cultural rights, digital art and proprietary technology—building assets that become stronger together.</p>
       </section>
 
+      <section className="problem-solution" id="why-atlas">
+        <header className="problem-solution-heading">
+          <span>01 / THE OPERATING PROBLEM</span>
+          <h2>A decision should not begin with<br /><em>document hunting.</em></h2>
+          <p>Before an operator backs a venue, event, partnership, or cultural asset, the critical facts are often trapped across contracts, reports, spreadsheets, and conversations.</p>
+        </header>
+        <div className="problem-solution-flow">
+          <article className="problem-state problem-state-fragmented">
+            <div className="problem-state-label"><span>Before Atlas</span><small>Fragmented evidence</small></div>
+            <div className="evidence-fragments">
+              <div><span>VALUATION SHEET</span><strong>S$1.24m reported value</strong><small>Last reviewed 93 days ago</small></div>
+              <div><span>RIGHTS ADDENDUM</span><strong>Territory terms</strong><small>Expiry not extracted</small></div>
+              <div><span>PARTNER MESSAGE</span><strong>Artist confirmation</strong><small>Commercial terms unclear</small></div>
+              <div><span>EVENT BRIEF</span><strong>Season launch</strong><small>Budget version conflict</small></div>
+            </div>
+            <p>Teams reconstruct the truth by hand—often when a commitment is already due.</p>
+          </article>
+          <div className="problem-solution-arrow" aria-hidden="true"><span>ATLAS</span><i>→</i><small>link evidence<br />to decision</small></div>
+          <article className="problem-state problem-state-connected">
+            <div className="problem-state-label"><span>With Atlas today</span><small>Decision-ready view</small></div>
+            <div className="decision-brief-card">
+              <span>ACTIVATION BRIEF / HUMAN REVIEW</span>
+              <strong>Moonphase Assembly</strong>
+              <div><b>FACTS LINKED</b><b>RISKS FLAGGED</b><b>ASSUMPTIONS LABELLED</b></div>
+              <p>Allocate venue capacity only after rights, partner commitments, and stale valuation evidence are reviewed.</p>
+              <em><i /> Ready for operator decision</em>
+            </div>
+            <p>Atlas creates a traceable decision trail. Humans still approve the commitment.</p>
+          </article>
+        </div>
+      </section>
+
       <section className="partnerships" id="partnerships">
         <div className="section-heading dark-ink"><span>02 / STRATEGIC PARTNERSHIPS</span><h2>Relationships are an<br /><em>operating advantage.</em></h2></div>
         <div className="partnership-layout">

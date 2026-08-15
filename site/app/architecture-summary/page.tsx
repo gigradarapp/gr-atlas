@@ -47,9 +47,22 @@ export default function ArchitectureSummaryPage() {
     <section className="section problem-section">
       <div className="section-heading"><span>02 / THE PROBLEM</span><h2>Culture assets are connected.<br /><em>Their information is not.</em></h2></div>
       <div className="problem-content">
-        <p>A culture-focused family-office model can hold or monitor venue exposure, private debt, event rights, artworks, proprietary technology, and partnership agreements. The facts arrive in incompatible reports, spreadsheets, contracts, and conversations.</p>
-        <div className="questions"><span>What do we own or have rights to?</span><span>Which values, obligations, or reports are stale?</span><span>Where are rights approaching expiry?</span><span>Which assets depend on the same partner, venue, or season?</span><span>What should we allocate to an activation?</span><span>Which conclusions are facts, inferences, or assumptions?</span></div>
+        <div className="problem-story">
+          <p>Before an operator commits to an activation, the facts it needs are stranded across reports, spreadsheets, agreements, and conversations.</p>
+          <p>What should be a decision becomes a risky manual reconstruction: what is owned, what is expiring, and what is merely assumed?</p>
+        </div>
+        <div className="problem-fragment-field" aria-label="Illustration of fragmented information preventing a decision">
+          <span className="problem-field-label">Decision brief / current cycle</span>
+          <article className="problem-source problem-source-contract"><span>PARTNERSHIP AGREEMENT</span><strong>Territory rights</strong><small>Expiry: not extracted</small></article>
+          <article className="problem-source problem-source-value"><span>VALUATION REPORT</span><strong>Venue exposure</strong><small>Updated: 93 days ago</small></article>
+          <article className="problem-source problem-source-brief"><span>EVENT BRIEF</span><strong>Season launch</strong><small>Budget: version conflict</small></article>
+          <article className="problem-source problem-source-message"><span>PARTNER MESSAGE</span><strong>Artist confirmation</strong><small>Commercial terms: unclear</small></article>
+          <i className="problem-link problem-link-one" aria-hidden="true" /><i className="problem-link problem-link-two" aria-hidden="true" /><i className="problem-link problem-link-three" aria-hidden="true" /><i className="problem-link problem-link-four" aria-hidden="true" />
+          <div className="problem-decision-card"><span>ACTIVATION DECISION</span><strong>GO / NO-GO?</strong><em><i /> Evidence incomplete</em></div>
+          <p className="problem-field-caption"><i /> 4 disconnected sources · 0 shared decision trail</p>
+        </div>
       </div>
+      <div className="problem-questions"><p>So the operator is left asking:</p><div className="questions"><span>What do we own or have rights to?</span><span>Which values, obligations, or reports are stale?</span><span>Where are rights approaching expiry?</span><span>Which assets depend on the same partner, venue, or season?</span><span>What should we allocate to an activation?</span><span>Which conclusions are facts, inferences, or assumptions?</span></div></div>
     </section>
 
     <section className="section solution-section">
