@@ -93,14 +93,11 @@ export default function OriginalsTab() {
             <h2 className="atlas-featured-title">Moonphase<br />Assembly</h2>
             <p className="atlas-featured-meta">Pasir Panjang Power Station · 03 Oct 2026</p>
           </div>
-          <div className="atlas-orbit-visual" aria-label="Moonphase Assembly rights system">
-            <span className="atlas-orbit-ring atlas-orbit-ring-outer" aria-hidden="true" />
-            <span className="atlas-orbit-ring atlas-orbit-ring-inner" aria-hidden="true" />
-            <span className="atlas-orbit-core" aria-hidden="true">MA</span>
-            <span className="atlas-orbit-node atlas-orbit-node-rights" aria-hidden="true">RIGHTS</span>
-            <span className="atlas-orbit-node atlas-orbit-node-venue" aria-hidden="true">VENUE</span>
-            <span className="atlas-orbit-node atlas-orbit-node-demand" aria-hidden="true">DEMAND</span>
-          </div>
+          <ul className="atlas-signal-tags" aria-label="Rights system status">
+            <li><span className="atlas-signal-dot atlas-signal-dot-rights" aria-hidden="true" />Rights · Clear</li>
+            <li><span className="atlas-signal-dot atlas-signal-dot-partner" aria-hidden="true" />Venue · Optioned</li>
+            <li><span className="atlas-signal-dot atlas-signal-dot-demand" aria-hidden="true" />Demand · +28%</li>
+          </ul>
           <dl className="atlas-featured-metrics">
             <div className="atlas-metric-row"><dt>Production readiness</dt><dd>78%</dd></div>
             <div className="atlas-metric-row"><dt>Rights window</dt><dd>1,872 days</dd></div>

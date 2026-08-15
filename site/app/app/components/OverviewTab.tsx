@@ -71,11 +71,6 @@ export default function OverviewTab() {
             </h1>
           </div>
         </div>
-        <div className="atlas-console-meta" aria-label="System status">
-          <span>Live model</span>
-          <span>Singapore</span>
-          <span>08:42 SGT</span>
-        </div>
       </header>
 
       <div className="atlas-portfolio-strip" aria-label="Portfolio summary">
@@ -110,16 +105,11 @@ export default function OverviewTab() {
             <p>Seasonal event IP / partnership atlas</p>
           </div>
 
-          <div className="atlas-orbit-model" aria-label="Relationship model: core IP with partner and audience signals">
-            <span className="atlas-orbit atlas-orbit-outer" aria-hidden="true" />
-            <span className="atlas-orbit atlas-orbit-inner" aria-hidden="true" />
-            <span className="atlas-orbit-core" aria-hidden="true" />
-            <span className="atlas-orbit-partner" aria-hidden="true" />
-            <span className="atlas-orbit-signal" aria-hidden="true" />
-            <span className="atlas-visually-hidden">
-              The cultural right is connected to an active partner and a live demand signal.
-            </span>
-          </div>
+          <ul className="atlas-signal-tags" aria-label="Active partner and demand signals">
+            <li><span className="atlas-signal-dot atlas-signal-dot-partner" aria-hidden="true" />Partner · Collective Minds</li>
+            <li><span className="atlas-signal-dot atlas-signal-dot-demand" aria-hidden="true" />Demand · Rising</li>
+            <li><span className="atlas-signal-dot atlas-signal-dot-rights" aria-hidden="true" />Rights · Window open</li>
+          </ul>
 
           <dl className="atlas-right-metrics">
             <div>

@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
 import OverviewTab from "./components/OverviewTab";
 import PartnershipsTab from "./components/PartnershipsTab";
@@ -58,14 +59,17 @@ export default function AtlasDashboard() {
         <div className="atlas-sidebar-status">
           <div><span className="atlas-live-dot" /><b>Atlas agents online</b></div>
           <p>4 sources awaiting review</p>
-          <a href="/">← View public website</a>
+          <a href="/">← Back to landing</a>
         </div>
       </aside>
 
       <section className="atlas-workspace">
         <header className="atlas-appbar">
           <button className="atlas-mobile-menu" type="button" aria-label="Toggle workspace navigation" aria-expanded={navOpen} onClick={() => setNavOpen(!navOpen)}>☰</button>
-          <div className="atlas-breadcrumb"><span>ATLAS</span><i>/</i><strong>{activeLabel}</strong></div>
+          <div className="atlas-appbar-start">
+            <Link className="atlas-back-link" href="/">← Landing</Link>
+            <div className="atlas-breadcrumb"><span>ATLAS</span><i>/</i><strong>{activeLabel}</strong></div>
+          </div>
           <div className="atlas-model-meta"><span>LIVE MODEL</span><span>SINGAPORE</span><span>08:42 SGT</span></div>
           <button className="atlas-agent-trigger" type="button" onClick={() => setAgentOpen(true)}><span className="atlas-live-dot" /> Ask Atlas <b>⌘ K</b></button>
         </header>
@@ -74,11 +78,13 @@ export default function AtlasDashboard() {
           <ActivePanel />
         </div>
 
-        <button className="atlas-command-bar" type="button" onClick={() => setAgentOpen(true)}>
-          <span className="atlas-agent-star">✦</span>
-          <span><b>Ask Atlas</b><small>Compare rights, surface dependencies, or prepare an allocation brief…</small></span>
-          <kbd>⌘ K</kbd>
-        </button>
+        {!agentOpen && (
+          <button className="atlas-command-bar" type="button" onClick={() => setAgentOpen(true)}>
+            <span className="atlas-agent-star">✦</span>
+            <span>Ask Atlas…</span>
+            <kbd>⌘ K</kbd>
+          </button>
+        )}
       </section>
 
       <aside className="atlas-agent-drawer" aria-hidden={!agentOpen}>
