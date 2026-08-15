@@ -43,7 +43,7 @@ export default function AtlasDashboard() {
       <aside className={`atlas-sidebar ${navOpen ? "is-open" : ""}`}>
         <div className="atlas-brand-row">
           <span className="atlas-brand-glyph" aria-hidden="true">B</span>
-          <div><strong>BUZO ATLAS</strong><small>AGENTIC FAMILY OFFICE</small></div>
+          <strong>BUZO ATLAS</strong>
         </div>
         <nav className="atlas-section-nav" aria-label="Atlas workspaces">
           <p>PORTFOLIO SYSTEM</p>
