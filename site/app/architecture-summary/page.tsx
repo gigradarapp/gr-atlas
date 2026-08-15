@@ -25,7 +25,7 @@ export default function ArchitectureSummaryPage() {
     <header className="summary-nav">
       <a className="summary-brand" href="/" aria-label="Return to Buzo Atlas home"><span>B</span> BUZO ATLAS</a>
       <p>ARCHITECTURE SUMMARY / AUG 2026</p>
-      <a href="/">BACK TO ATLAS ↗</a>
+      <div className="summary-nav-actions"><a href="/buzo-atlas-architecture-summary.pdf" download>DOWNLOAD PDF ↓</a><a href="/">BACK TO ATLAS ↗</a></div>
     </header>
 
     <section className="summary-hero">
