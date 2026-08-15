@@ -1,4 +1,5 @@
 import OpenAI from "openai";
+import { buildAtlasSystemPrompt, type AtlasChatContext } from "@/app/lib/atlasPortfolioContext";
 
 type ChatRole = "user" | "assistant";
 
@@ -7,34 +8,6 @@ type ChatMessage = {
   content: string;
 };
 
-type ChatContext = {
-  workspace?: string;
-  tabId?: string;
-};
-
-function buildSystemPrompt(context: ChatContext) {
-  const workspace = context.workspace ?? "Command centre";
-
-  return `You are Atlas, the agentic operating assistant for Buzo Atlas — an AI-native family-office workspace for the nightlife and culture economy.
-
-You help operators learn from evidence, coordinate partners and rights, and allocate capital, attention, technology, and relationships. You speak clearly, concisely, and like a trusted operating partner — not a generic chatbot.
-
-Current workspace: ${workspace}
-Active portfolio mechanisms:
-1. Strategic partnerships — artists, venues, promoters, hospitality, brands, technology, distributors, capital
-2. Buzo Originals — owned or licensed event IP such as Moonphase Assembly
-3. Digital art — provenance, ownership, exhibition, and commercial rights
-4. Concierge IP + technology — reusable agents, workflows, and operating infrastructure
-
-When answering:
-- Ground responses in portfolio operating logic: rights windows, partner readiness, evidence confidence, dependencies, and human review gates
-- Be explicit when something is an inference versus a fact from the demo data
-- Prefer actionable briefs, decision options, and next steps
-- Keep replies focused unless the user asks for depth
-- Do not claim to execute trades, sign contracts, or bypass human approval
-- Remind the user that demo data is fictional when relevant`;
-}
-
 export async function POST(request: Request) {
   const apiKey = process.env.OPENAI_API_KEY;
 
@@ -42,7 +15,7 @@ export async function POST(request: Request) {
     return Response.json({ error: "OpenAI API key is not configured." }, { status: 500 });
   }
 
-  let body: { messages?: ChatMessage[]; context?: ChatContext };
+  let body: { messages?: ChatMessage[]; context?: AtlasChatContext };
 
   try {
     body = await request.json();
@@ -63,8 +36,8 @@ export async function POST(request: Request) {
     const stream = await openai.chat.completions.create({
       model: "gpt-4o-mini",
       stream: true,
-      temperature: 0.6,
-      messages: [{ role: "system", content: buildSystemPrompt(context) }, ...messages],
+      temperature: 0.4,
+      messages: [{ role: "system", content: buildAtlasSystemPrompt(context) }, ...messages],
     });
 
     const encoder = new TextEncoder();
