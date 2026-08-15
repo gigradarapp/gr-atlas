@@ -1,42 +1,40 @@
 import OpenAI from "openai";
-import { buildAtlasSystemPrompt, type AtlasChatContext } from "@/app/lib/atlasPortfolioContext";
+import { buildAtlasSystemPrompt } from "@/app/lib/atlasPortfolioContext";
+import {
+  apiHeaders,
+  checkAtlasRateLimit,
+  jsonError,
+  parseAtlasChatRequest,
+  requireSameOrigin,
+} from "@/app/lib/atlasApiSecurity";
 
-type ChatRole = "user" | "assistant";
-
-type ChatMessage = {
-  role: ChatRole;
-  content: string;
-};
+export const runtime = "nodejs";
 
 export async function POST(request: Request) {
   const apiKey = process.env.OPENAI_API_KEY;
 
   if (!apiKey) {
-    return Response.json({ error: "OpenAI API key is not configured." }, { status: 500 });
+    return jsonError("Atlas is not configured.", 503);
   }
 
-  let body: { messages?: ChatMessage[]; context?: AtlasChatContext };
+  const originError = requireSameOrigin(request);
+  if (originError) return originError;
 
-  try {
-    body = await request.json();
-  } catch {
-    return Response.json({ error: "Invalid request body." }, { status: 400 });
-  }
+  const rateLimitError = checkAtlasRateLimit(request);
+  if (rateLimitError) return rateLimitError;
 
-  const messages = body.messages?.filter((message) => message.content.trim()) ?? [];
-  const context = body.context ?? {};
+  const parsed = await parseAtlasChatRequest(request);
+  if ("error" in parsed) return parsed.error;
+  const { messages, context } = parsed.value;
 
-  if (messages.length === 0) {
-    return Response.json({ error: "At least one message is required." }, { status: 400 });
-  }
-
-  const openai = new OpenAI({ apiKey });
+  const openai = new OpenAI({ apiKey, maxRetries: 0, timeout: 15_000 });
 
   try {
     const stream = await openai.chat.completions.create({
       model: "gpt-4o-mini",
       stream: true,
       temperature: 0.4,
+      max_completion_tokens: 350,
       messages: [{ role: "system", content: buildAtlasSystemPrompt(context) }, ...messages],
     });
 
@@ -60,12 +58,11 @@ export async function POST(request: Request) {
 
     return new Response(readable, {
       headers: {
+        ...apiHeaders(),
         "Content-Type": "text/plain; charset=utf-8",
-        "Cache-Control": "no-store",
       },
     });
-  } catch (error) {
-    const message = error instanceof Error ? error.message : "Failed to reach OpenAI.";
-    return Response.json({ error: message }, { status: 502 });
+  } catch {
+    return jsonError("Atlas could not respond right now. Please try again.", 502);
   }
 }

@@ -1,4 +1,4 @@
-import OpenAI from "openai";
+import { apiHeaders } from "@/app/lib/atlasApiSecurity";
 
 export async function GET() {
   const apiKey = process.env.OPENAI_API_KEY;
@@ -9,36 +9,14 @@ export async function GET() {
         status: "unconfigured",
         message: "OpenAI API key is not configured.",
       },
-      { status: 503, headers: { "Cache-Control": "no-store" } },
+      { status: 503, headers: apiHeaders() },
     );
   }
 
-  const openai = new OpenAI({ apiKey });
-  const started = Date.now();
-
-  try {
-    await openai.models.retrieve("gpt-4o-mini");
-    const latencyMs = Date.now() - started;
-
-    return Response.json(
-      {
-        status: "online",
-        model: "gpt-4o-mini",
-        latencyMs,
-      },
-      { headers: { "Cache-Control": "no-store" } },
-    );
-  } catch (error) {
-    const latencyMs = Date.now() - started;
-    const message = error instanceof Error ? error.message : "OpenAI ping failed.";
-
-    return Response.json(
-      {
-        status: "offline",
-        message,
-        latencyMs,
-      },
-      { status: 502, headers: { "Cache-Control": "no-store" } },
-    );
-  }
+  // Do not call OpenAI for a browser health poll: that endpoint is public and
+  // polled every 45 seconds by each visitor. The chat route is the real check.
+  return Response.json(
+    { status: "online", model: "gpt-4o-mini" },
+    { headers: apiHeaders() },
+  );
 }

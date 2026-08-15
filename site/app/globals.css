@@ -15,6 +15,7 @@ button,a { font:inherit; } button { color:inherit; } a { color:inherit; text-dec
 .brand .brand-mark { color:var(--acid); }
 .nav-links { display:flex; gap:30px; font-size:12px; color:rgba(255,255,255,.64); }
 .nav-links a { transition:color .25s ease; } .nav-links a:hover { color:white; }
+.mobile-atlas-cta { display:none; }
 .nav-cta { justify-self:end; padding:14px 17px; border-radius:12px; background:var(--acid); color:var(--ink); font-size:12px; font-weight:700; }
 .nav-cta span { margin-left:20px; } .menu-toggle { display:none; background:transparent; border:0; }
 
@@ -248,7 +249,7 @@ footer p { text-align:center; margin:0; letter-spacing:0; font-weight:400; } foo
 @media (max-width:760px) {
   .topbar { inset:12px 12px auto; height:56px; grid-template-columns:1fr auto; } .topbar .brand { font-size:10px; } .nav-cta { display:none; }
   .menu-toggle { display:grid; gap:6px; padding:10px; } .menu-toggle span { width:21px; height:1px; background:white; }
-  .nav-links { display:none; position:absolute; top:64px; right:0; left:0; padding:24px; background:rgba(8,8,10,.96); border:1px solid rgba(255,255,255,.15); border-radius:15px; flex-direction:column; gap:20px; } .nav-links.is-open { display:flex; }
+  .nav-links { display:none; position:absolute; top:64px; right:0; left:0; padding:24px; background:rgba(8,8,10,.96); border:1px solid rgba(255,255,255,.15); border-radius:15px; flex-direction:column; gap:20px; } .nav-links.is-open { display:flex; }.nav-links .mobile-atlas-cta { display:flex; align-items:center; justify-content:space-between; margin-top:4px; padding:15px 16px; border-radius:10px; background:var(--acid); color:var(--ink); font-size:12px; font-weight:700; }.mobile-atlas-cta span { font-size:16px; }
   .hero { padding:125px 18px 80px; } .hero-copy { margin-bottom:80px; } .hero h1 { font-size:clamp(62px,21vw,100px); line-height:.82; } .hero-intro,.hero-actions { margin-left:0; } .hero-intro { font-size:15px; } .hero-actions { align-items:flex-start; flex-direction:column; gap:20px; }
   .dashboard-stage { width:940px; transform:scale(.38); transform-origin:top left; margin-bottom:-445px; } .dashboard-shell { min-height:720px; }
   .atlas-console-stage { width:113vw; margin-left:-8vw; transform:perspective(1200px) rotateX(3deg); }

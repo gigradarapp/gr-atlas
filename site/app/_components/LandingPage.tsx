@@ -38,6 +38,7 @@ export default function Home() {
           <a href="#collection" onClick={() => setMenuOpen(false)}>Collection</a>
           <a href="#technology" onClick={() => setMenuOpen(false)}>Technology</a>
           <a href="/architecture-summary" onClick={() => setMenuOpen(false)}>Architecture</a>
+          <a className="mobile-atlas-cta" href="/app" onClick={() => setMenuOpen(false)}>Enter Atlas <span>↗</span></a>
         </div>
         <a className="nav-cta" href="/app">Enter Atlas <span>↗</span></a>
         <button className="menu-toggle" type="button" aria-label="Toggle navigation" aria-expanded={menuOpen} onClick={() => setMenuOpen(!menuOpen)}>

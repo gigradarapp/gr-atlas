@@ -75,10 +75,11 @@ export default function AtlasDashboard() {
           <a href="/">← Back to landing</a>
         </div>
       </aside>
+      {navOpen && <button className="atlas-nav-backdrop" type="button" aria-label="Close workspace navigation" onClick={() => setNavOpen(false)} />}
 
       <section className="atlas-workspace">
         <header className="atlas-appbar">
-          <button className="atlas-mobile-menu" type="button" aria-label="Toggle workspace navigation" aria-expanded={navOpen} onClick={() => setNavOpen(!navOpen)}>☰</button>
+          <button className="atlas-mobile-menu" type="button" aria-label="Toggle workspace navigation" aria-expanded={navOpen} onClick={() => setNavOpen(!navOpen)}>{navOpen ? "×" : "☰"}</button>
           <div className="atlas-breadcrumb"><span>ATLAS</span><i>/</i><strong>{activeLabel}</strong></div>
           <AtlasAgentHealth />
         </header>
@@ -88,7 +89,7 @@ export default function AtlasDashboard() {
         </div>
 
         {!agentOpen && (
-          <button className="atlas-command-bar" type="button" onClick={() => setAgentOpen(true)}>
+          <button className="atlas-command-bar" type="button" aria-label="Ask Atlas" onClick={() => setAgentOpen(true)}>
             <span className="atlas-agent-star">✦</span>
             <span>Ask Atlas…</span>
             <kbd>⌘ K</kbd>
