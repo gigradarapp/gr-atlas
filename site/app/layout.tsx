@@ -20,13 +20,12 @@ const instrumentSerif = Instrument_Serif({
 });
 
 export const metadata: Metadata = {
-  title: "Buzo Atlas — The operating system for culture after dark",
+  title: "Buzo Atlas — Agentic family office for nightlife & culture",
   description:
-    "An agentic operating system for a family-office model focused on nightlife and the culture economy.",
+    "Atlas uses AI to discover opportunities, coordinate partners, and manage cultural assets across the nightlife and culture economy.",
   openGraph: {
     title: "Buzo Atlas",
-    description: "The operating system for culture after dark.",
-    images: ["/og-buzo-atlas.png"],
+    description: "The agentic family office for the nightlife and culture economy.",
   },
 };
 

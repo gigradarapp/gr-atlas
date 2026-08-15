@@ -27,7 +27,7 @@ button,a { font:inherit; } button { color:inherit; } a { color:inherit; text-dec
 .eyebrow span { width:6px; height:6px; background:var(--acid); border-radius:50%; box-shadow:0 0 18px var(--acid); }
 .hero h1 { max-width:1050px; margin:36px 0 30px; font-size:clamp(72px,9.8vw,156px); line-height:.81; letter-spacing:-.075em; font-weight:570; }
 h1 em,h2 em { font-family:var(--font-instrument-serif); font-weight:400; }
-.hero h1 em { display:block; color:transparent; -webkit-text-stroke:1px rgba(255,255,255,.65); letter-spacing:-.04em; }
+.hero h1 em { display:block; color:var(--acid); -webkit-text-stroke:0; letter-spacing:-.04em; text-shadow:0 0 38px rgba(223,255,63,.14); }
 .hero-intro { max-width:560px; margin:0 0 38px auto; font-size:18px; line-height:1.65; color:rgba(255,255,255,.62); }
 .hero-actions { max-width:560px; margin-left:auto; display:flex; gap:32px; align-items:center; }
 .button { display:inline-flex; align-items:center; justify-content:space-between; min-width:220px; padding:17px 18px; border-radius:100px; font-size:13px; font-weight:650; }
