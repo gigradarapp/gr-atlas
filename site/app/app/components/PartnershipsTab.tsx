@@ -3,6 +3,26 @@
 import { useState } from "react";
 import { partnershipRecords } from "./partnershipsVendorArchive";
 
+function renderInlineMarkdown(text: string) {
+  return text.split(/(\*\*[^*]+\*\*)/g).map((part, index) =>
+    part.startsWith("**") && part.endsWith("**")
+      ? <strong key={`${part}-${index}`}>{part.slice(2, -2)}</strong>
+      : part,
+  );
+}
+
+function renderMarkdown(markdown: string) {
+  return markdown.trim().split("\n").map((line, index) => {
+    const key = `${index}-${line}`;
+    if (!line.trim()) return <div className="atlas-markdown-spacer" key={key} aria-hidden="true" />;
+    if (line.startsWith("# ")) return <h2 key={key}>{renderInlineMarkdown(line.slice(2))}</h2>;
+    if (line.startsWith("## ")) return <h3 key={key}>{renderInlineMarkdown(line.slice(3))}</h3>;
+    if (line.startsWith("> ")) return <p className="atlas-markdown-quote" key={key}>{renderInlineMarkdown(line.slice(2))}</p>;
+    if (line.startsWith("- ")) return <p className="atlas-markdown-list-item" key={key}>{renderInlineMarkdown(line.slice(2))}</p>;
+    return <p key={key}>{renderInlineMarkdown(line)}</p>;
+  });
+}
+
 export default function PartnershipsTab() {
   const [activeId, setActiveId] = useState(partnershipRecords[0].id);
   const activePartner = partnershipRecords.find((partner) => partner.id === activeId) ?? partnershipRecords[0];
@@ -45,9 +65,11 @@ export default function PartnershipsTab() {
 
         <aside className="atlas-partner-detail" aria-live="polite">
           <header><div><span>Selected relationship</span><h2>{activePartner.name}</h2></div><em>{activePartner.status}</em></header>
-          <p className="atlas-partner-detail-summary">{activePartner.summary}</p>
-          <dl className="atlas-partner-context-list">{activePartner.context.map((item) => <div key={item.label}><dt>{item.label}</dt><dd>{item.detail}</dd></div>)}</dl>
-          <div className="atlas-partner-detail-foot"><span>{activePartner.period}</span><span>{activePartner.discussions.length} logged discussions</span></div>
+          <div className="atlas-partner-markdown" aria-label={`${activePartner.name} stored discussion context`}>
+            <div className="atlas-partner-markdown-label"><span>Stored context</span><span>Markdown record</span></div>
+            {renderMarkdown(activePartner.markdown)}
+          </div>
+          <div className="atlas-partner-detail-foot"><span>{activePartner.period}</span><span>{activePartner.discussions.length} logged discussion{activePartner.discussions.length === 1 ? "" : "s"}</span></div>
         </aside>
       </div>
 
