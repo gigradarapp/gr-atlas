@@ -1,1 +1,1 @@
-export { default } from "./atlas/page";
+export { default } from "./_components/LandingPage";
