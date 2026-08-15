@@ -1,5 +1,7 @@
 # Buzo Originals Cultural-Asset Thesis
 
+> **Legacy — archived 15 August 2026 and superseded by the [current product thesis](../../../PRODUCT_THESIS.md).**
+
 **Status:** Selected strategic direction — validation pending
 **Recorded:** 15 August 2026
 

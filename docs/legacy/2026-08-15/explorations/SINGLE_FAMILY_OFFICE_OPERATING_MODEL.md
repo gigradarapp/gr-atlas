@@ -1,5 +1,7 @@
 # Buzo Atlas Single Family Office Operating Model
 
+> **Legacy — archived 15 August 2026 and superseded by the [current product thesis](../../../PRODUCT_THESIS.md).**
+
 **Status:** Draft exploration — not adopted strategy
 **Recorded:** 15 August 2026
 

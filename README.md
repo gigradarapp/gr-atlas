@@ -1,48 +1,63 @@
 # Buzo Atlas
 
-**The operator intelligence layer for the nightlife economy.**
+**Buzo Atlas is the operating system for an AI-native family-office model focused on the nightlife and culture economy.**
 
-Buzo Labs is building the AI operating system for the nightlife economy. Buzo Atlas is the operator layer: a place to map the assets, operators, partnerships, and demand shaping hospitality and entertainment.
+It helps the model's operators learn, coordinate, and allocate resources across strategic partnerships, nightlife-event rights, digital art, and proprietary concierge technology.
 
-For the **Single Family Office** hackathon track, Atlas starts with a focused problem: family offices with hospitality and entertainment exposure receive fragmented reports across private companies, real estate, and private debt. Atlas is being designed to turn those reports into one evidence-linked portfolio and risk view.
+## How we achieve this
+
+1. **Strategic partnerships** — work with artists, venues, promoters, hospitality groups, brands, technology providers, and capital partners.
+2. **Buzo Originals** — create, acquire, co-own, or license repeatable nightlife-event formats and commercial rights.
+3. **Digital art** — commission and collaborate with local artists under clear ownership, exhibition, reproduction, and commercial terms.
+4. **Proprietary concierge IP and technology** — own reusable agents, workflows, integrations, recommendation systems, and operating infrastructure.
+
+These mechanisms and assets are designed to reinforce one another. Shared technology, distribution, partner access, and operating knowledge can make future concierge experiences and events faster to launch, less expensive to operate, and more efficient to acquire customers for.
 
 ## Product system
 
-| Product | Role | Status |
-| --- | --- | --- |
-| **Buzo** | Consumer concierge for discovering credible events, expressing intent, and planning a night out. | Existing companion product |
-| **Buzo Atlas** | Operator intelligence for consolidating asset, operating, partnership, and—later—demand data. | Hackathon MVP in development |
-| **Demand graph** | Connects what people wanted, what Buzo recommended, what they chose, and eventual booking, attendance, and return signals. | Long-term thesis; not yet integrated |
+| Component | Role |
+| --- | --- |
+| **Buzo Labs** | Builds the family-office model and forms strategic partnerships |
+| **Buzo** | Consumer concierge and demand-distribution layer |
+| **Buzo Originals** | Planned portfolio of owned, co-owned, commissioned, or licensed nightlife-event and cultural IP |
+| **Buzo Atlas** | Agentic operating system for partnerships, assets, rights, performance, obligations, and risk |
 
-## Hackathon MVP
+## Agentic operating model
 
-The planned prototype will demonstrate a focused decision workflow:
+Atlas supports three recurring jobs:
 
-1. Ingest sample private-asset, real-estate, and private-debt reports.
-2. Normalize holdings, valuations, ownership, debt, dates, and source references.
-3. Flag missing data, stale reports, conflicting values, concentration, and upcoming obligations.
-4. Present a unified portfolio view with drill-down to source evidence.
-5. Let an operator ask portfolio questions in natural language.
+- **Learn:** consolidate bespoke reports, contracts, ownership, valuations, obligations, operating results, and permissioned market signals.
+- **Coordinate:** align artists, operators, partners, advisors, and capital owners around rights, responsibilities, timelines, and decisions.
+- **Allocate:** help humans decide where to deploy capital, technology, management attention, and relationships.
 
-The goal is decision support with traceable evidence and human review—not autonomous investment advice.
+AI can assist with research, partner discovery, rights extraction, event concepts, budgets, schedules, campaign preparation, portfolio analysis, and reporting. Humans retain authority over investments, contracts, creative direction, cultural integrity, safety, and final approvals.
 
-## Why this could become defensible
+## Hackathon focus
 
-Event listings alone are replicable. The longer-term opportunity is a closed loop between consumer intent and operator decisions:
+For the **Single Family Office** track, the prototype will model a culture-focused portfolio containing assets such as:
 
-`intent -> recommendation -> selection -> booking or attendance -> return`
+- equity in a nightlife or hospitality operator
+- venue-related real estate or lease exposure
+- private debt issued to an event promoter
+- rights to a recurring Buzo Original
+- physical or digital artworks and their licences
+- concierge technology and commercial partnership rights
 
-Buzo already covers the early consumer discovery and planning loop. Atlas explores how aggregated, permissioned demand signals could eventually complement operational and asset reporting for venues, hospitality groups, strategic partners, and investors.
+Atlas will consolidate the portfolio's bespoke reports and contracts into one evidence-linked view, identify financial and rights-related risks, and support an agent-assisted resource-allocation decision for a proposed nightlife or cultural activation.
 
-## Scope
+## Current status
 
-This repository begins as a hackathon prototype. Portfolio ingestion, risk analysis, family-office integrations, and Buzo demand-signal integration should be treated as planned work until implemented and demonstrated.
+Buzo Atlas is currently a strategy and hackathon prototype. The existing Buzo repositories demonstrate the consumer concierge, event ingestion and normalization, recommendations, and planning surfaces. Atlas portfolio consolidation, Buzo Originals ownership, digital-art holdings, integrated partnership intelligence, and family-office operations remain proposed until implemented or contractually established.
 
-The concept's [original inspiration](docs/ORIGINAL_INSPIRATION.md) is preserved separately from the evolving product thesis.
+Buzo Atlas is not yet a legally established family office, investment fund, regulated investment manager, or adviser managing third-party capital. Claims about faster launches, lower costs, and improved customer-acquisition cost remain hypotheses until measured across repeated projects.
+
+## Documentation
+
+- [Current product thesis](docs/PRODUCT_THESIS.md)
+- [Legacy strategy archive](docs/legacy/README.md)
 
 ## Related Buzo repositories
 
 - [gr-frontend](https://github.com/gigradarapp/gr-frontend) — consumer app
 - [gr-backend](https://github.com/gigradarapp/gr-backend) — API and product services
 - [gr-openclaw](https://github.com/gigradarapp/gr-openclaw) — event ingestion and normalization
-- [gr-landing-page](https://github.com/gigradarapp/gr-landing-page) — company thesis

@@ -1,5 +1,7 @@
 # Original Inspiration
 
+> **Legacy — archived 15 August 2026 and superseded by the [current product thesis](../../PRODUCT_THESIS.md).**
+
 **Recorded:** 15 August 2026
 
 This note preserves the original idea that connected the existing Buzo consumer product to the Buzo Atlas operator layer.
