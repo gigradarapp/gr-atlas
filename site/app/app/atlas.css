@@ -275,7 +275,7 @@ body:has(.atlas-app) { background: var(--atlas-bg); }
 .atlas-netflix-card { width:min(220px,42vw); flex:0 0 auto; scroll-snap-align:start; border-radius:12px; overflow:hidden; border:1px solid var(--atlas-line); background:rgba(17,19,15,.82); transition:transform .22s ease, border-color .22s ease, box-shadow .22s ease; }
 .atlas-netflix-card:hover { transform:translateY(-4px) scale(1.02); border-color:rgba(223,255,49,.28); box-shadow:0 18px 40px rgba(0,0,0,.35), 0 0 24px var(--event-glow); }
 .atlas-netflix-poster { position:relative; aspect-ratio:2/3; overflow:hidden; background:#0d0f0b; }
-.atlas-netflix-poster-image { width:100%; height:100%; object-fit:cover; display:block; }
+.atlas-netflix-poster-image { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block; }
 .atlas-netflix-poster-overlay { position:absolute; inset:0; background:linear-gradient(to top, rgba(13,15,11,.92) 0%, rgba(13,15,11,.08) 42%, rgba(13,15,11,.18) 100%); pointer-events:none; }
 .atlas-netflix-meta { padding:12px 13px 14px; }
 .atlas-netflix-meta h3 { margin:0 0 6px; font-size:12px; line-height:1.25; }

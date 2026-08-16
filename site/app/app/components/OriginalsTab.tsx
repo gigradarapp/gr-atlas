@@ -1,3 +1,4 @@
+import Image from "next/image";
 import {
   eventEarnings,
   formatOriginalsCurrency,
@@ -59,11 +60,12 @@ export default function OriginalsTab() {
                   }
                 >
                   <div className="atlas-netflix-poster">
-                    <img
+                    <Image
                       src={event.poster}
                       alt={`${event.title} poster`}
                       className="atlas-netflix-poster-image"
-                      loading="lazy"
+                      fill
+                      sizes="(max-width: 768px) 58vw, 220px"
                     />
                     <span className="atlas-netflix-poster-overlay" aria-hidden="true" />
                   </div>

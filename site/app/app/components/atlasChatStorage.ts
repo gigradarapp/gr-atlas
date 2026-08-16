@@ -20,8 +20,12 @@ const STORAGE_KEY = "buzo-atlas-chat-sessions";
 const ACTIVE_KEY = "buzo-atlas-chat-active-id";
 const MAX_SESSIONS = 40;
 
+export function getTimestamp() {
+  return Date.now();
+}
+
 export function createId() {
-  return `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
+  return `${getTimestamp()}-${Math.random().toString(36).slice(2, 8)}`;
 }
 
 export function welcomeMessage(workspace = "Command centre", tabId = "overview"): ChatMessage {
@@ -33,7 +37,7 @@ export function welcomeMessage(workspace = "Command centre", tabId = "overview")
 }
 
 export function createSession(workspace: string, tabId: string): ChatSession {
-  const now = Date.now();
+  const now = getTimestamp();
   return {
     id: createId(),
     title: "New chat",

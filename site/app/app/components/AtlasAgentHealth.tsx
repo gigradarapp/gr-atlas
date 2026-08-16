@@ -13,11 +13,7 @@ const POLL_MS = 45_000;
 export default function AtlasAgentHealth() {
   const [state, setState] = useState<AgentHealthState>("checking");
 
-  const checkHealth = useCallback(async (background = false) => {
-    if (!background) {
-      setState("checking");
-    }
-
+  const checkHealth = useCallback(async () => {
     try {
       const response = await fetch("/api/atlas/health", { cache: "no-store" });
       const payload = (await response.json()) as HealthPayload;
@@ -39,12 +35,17 @@ export default function AtlasAgentHealth() {
   }, []);
 
   useEffect(() => {
-    void checkHealth();
+    const initialCheck = window.setTimeout(() => {
+      void checkHealth();
+    }, 0);
     const interval = window.setInterval(() => {
-      void checkHealth(true);
+      void checkHealth();
     }, POLL_MS);
 
-    return () => window.clearInterval(interval);
+    return () => {
+      window.clearTimeout(initialCheck);
+      window.clearInterval(interval);
+    };
   }, [checkHealth]);
 
   const label =

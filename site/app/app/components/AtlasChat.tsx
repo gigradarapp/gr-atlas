@@ -1,12 +1,13 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { getSectionSuggestions } from "./atlasChatSuggestions";
 import {
   createId,
   createSession,
   deriveSessionTitle,
   formatSessionTime,
+  getTimestamp,
   loadChatState,
   saveChatState,
   sessionPreview,
@@ -34,21 +35,28 @@ export default function AtlasChat({ open, onClose, workspace, tabId }: AtlasChat
   const inputRef = useRef<HTMLTextAreaElement>(null);
 
   const activeSession = sessions.find((session) => session.id === activeSessionId) ?? null;
-  const messages = activeSession?.messages ?? [welcomeMessage(workspace, tabId)];
+  const messages = useMemo(
+    () => activeSession?.messages ?? [welcomeMessage(workspace, tabId)],
+    [activeSession, tabId, workspace],
+  );
   const sectionSuggestions = getSectionSuggestions(tabId);
   const suggestedPrompts = sectionSuggestions.prompts;
 
   useEffect(() => {
-    const stored = loadChatState();
-    if (stored.sessions.length > 0) {
-      setSessions(stored.sessions);
-      setActiveSessionId(stored.activeId ?? stored.sessions[0]?.id ?? null);
-    } else {
-      const initial = createSession(workspace, tabId);
-      setSessions([initial]);
-      setActiveSessionId(initial.id);
-    }
-    setHydrated(true);
+    const frame = window.requestAnimationFrame(() => {
+      const stored = loadChatState();
+      if (stored.sessions.length > 0) {
+        setSessions(stored.sessions);
+        setActiveSessionId(stored.activeId ?? stored.sessions[0]?.id ?? null);
+      } else {
+        const initial = createSession(workspace, tabId);
+        setSessions([initial]);
+        setActiveSessionId(initial.id);
+      }
+      setHydrated(true);
+    });
+
+    return () => window.cancelAnimationFrame(frame);
     // Hydrate once from localStorage on mount.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -58,36 +66,40 @@ export default function AtlasChat({ open, onClose, workspace, tabId }: AtlasChat
       return;
     }
 
-    setSessions((current) =>
-      current.map((session) => {
-        if (session.id !== activeSessionId) {
-          return session;
-        }
+    const frame = window.requestAnimationFrame(() => {
+      setSessions((current) =>
+        current.map((session) => {
+          if (session.id !== activeSessionId) {
+            return session;
+          }
 
-        const onlyWelcome =
-          session.messages.length === 1 && session.messages[0].id === "welcome" && session.messages[0].role === "assistant";
-        if (!onlyWelcome) {
-          return session;
-        }
+          const onlyWelcome =
+            session.messages.length === 1 && session.messages[0].id === "welcome" && session.messages[0].role === "assistant";
+          if (!onlyWelcome) {
+            return session;
+          }
 
-        const nextWelcome = welcomeMessage(workspace, tabId);
-        if (
-          session.workspace === workspace &&
-          session.tabId === tabId &&
-          session.messages[0].content === nextWelcome.content
-        ) {
-          return session;
-        }
+          const nextWelcome = welcomeMessage(workspace, tabId);
+          if (
+            session.workspace === workspace &&
+            session.tabId === tabId &&
+            session.messages[0].content === nextWelcome.content
+          ) {
+            return session;
+          }
 
-        return {
-          ...session,
-          workspace,
-          tabId,
-          messages: [nextWelcome],
-          updatedAt: Date.now(),
-        };
-      }),
-    );
+          return {
+            ...session,
+            workspace,
+            tabId,
+            messages: [nextWelcome],
+            updatedAt: getTimestamp(),
+          };
+        }),
+      );
+    });
+
+    return () => window.cancelAnimationFrame(frame);
   }, [tabId, workspace, activeSessionId, hydrated]);
 
   useEffect(() => {
@@ -149,7 +161,7 @@ export default function AtlasChat({ open, onClose, workspace, tabId }: AtlasChat
     const userMessage: ChatMessage = { id: createId(), role: "user", content: text };
     const assistantMessage: ChatMessage = { id: createId(), role: "assistant", content: "" };
     const nextMessages = [...conversation, userMessage, assistantMessage];
-    const now = Date.now();
+    const now = getTimestamp();
 
     setSessions((current) =>
       current.map((session) =>
@@ -210,7 +222,7 @@ export default function AtlasChat({ open, onClose, workspace, tabId }: AtlasChat
           messages: session.messages.map((message) =>
             message.id === assistantMessage.id ? { ...message, content: streamed } : message,
           ),
-          updatedAt: Date.now(),
+          updatedAt: getTimestamp(),
         }));
       }
     } catch (sendError) {
@@ -219,7 +231,7 @@ export default function AtlasChat({ open, onClose, workspace, tabId }: AtlasChat
       updateActiveSession((session) => ({
         ...session,
         messages: session.messages.filter((item) => item.id !== assistantMessage.id),
-        updatedAt: Date.now(),
+        updatedAt: getTimestamp(),
       }));
     } finally {
       setIsLoading(false);

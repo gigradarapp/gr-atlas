@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import "./architecture-summary.css";
 
 export const metadata: Metadata = {
@@ -23,9 +24,9 @@ const economics = [
 export default function ArchitectureSummaryPage() {
   return <main className="atlas-summary">
     <header className="summary-nav">
-      <a className="summary-brand" href="/" aria-label="Return to Buzo Atlas home"><span>B</span> BUZO ATLAS</a>
+      <Link className="summary-brand" href="/" aria-label="Return to Buzo Atlas home"><span>B</span> BUZO ATLAS</Link>
       <p>ARCHITECTURE SUMMARY / AUG 2026</p>
-      <div className="summary-nav-actions"><a href="/buzo-atlas-architecture-summary.pdf" download>DOWNLOAD PDF ↓</a><a href="/">BACK TO ATLAS ↗</a></div>
+      <div className="summary-nav-actions"><a href="/buzo-atlas-architecture-summary.pdf" download>DOWNLOAD PDF ↓</a><Link href="/">BACK TO ATLAS ↗</Link></div>
     </header>
 
     <section className="summary-hero">
@@ -96,6 +97,6 @@ export default function ArchitectureSummaryPage() {
     </section>
 
     <section className="agent-section"><div><span>ATLAS AGENT LAYER</span><h2>Learn.<br />Coordinate.<br /><em>Allocate.</em></h2></div><div className="agent-steps"><article><b>Learn</b><p>Read reports, contracts, operating data, and market signals into one evidence-linked view.</p></article><article><b>Coordinate</b><p>Surface owners, rights, dependencies, approval gates, and time-sensitive obligations.</p></article><article><b>Allocate</b><p>Prepare options for capital, technology, management attention, and relationship capacity.</p></article></div></section>
-    <footer className="summary-footer"><span>BUZO ATLAS / ARCHITECTURE SUMMARY</span><p>Strategy and hackathon prototype. Human review and approval required.</p><a href="/">RETURN TO ATLAS ↑</a></footer>
+    <footer className="summary-footer"><span>BUZO ATLAS / ARCHITECTURE SUMMARY</span><p>Strategy and hackathon prototype. Human review and approval required.</p><Link href="/">RETURN TO ATLAS ↑</Link></footer>
   </main>;
 }

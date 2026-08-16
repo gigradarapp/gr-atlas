@@ -19,6 +19,7 @@ function BrandMark() {
 
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [nightBloomVideoReady, setNightBloomVideoReady] = useState(false);
   const artRailRef = useRef<HTMLDivElement>(null);
 
   const scrollArt = (direction: number) => {
@@ -194,18 +195,30 @@ export default function Home() {
       </section>
 
       <section className="originals" id="originals">
-        <div className="originals-image" />
+        <div className={`originals-image${nightBloomVideoReady ? " is-video-ready" : ""}`}>
+          <video
+            className="originals-video"
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="metadata"
+            aria-hidden="true"
+            onCanPlay={() => setNightBloomVideoReady(true)}
+          >
+            <source src="/assets/videoes/Night Bloom-media-b9e38533fb08a2666fb7afd5.mp4" type="video/mp4" />
+          </video>
+        </div>
         <div className="originals-scrim" />
         <div className="originals-top"><span>04 / BUZO ORIGINALS</span><span>OWNED · CO-OWNED · LICENSED</span></div>
         <div className="originals-main">
-          <p>ORIGINAL FORMAT 001</p>
+          <p>BUZO ORIGINALS / NIGHT BLOOM</p>
           <h2>Night<br /><em>Bloom</em></h2>
           <div className="originals-meta"><span>SINGAPORE / 2027</span><span>ART × MUSIC × MONSOON</span></div>
         </div>
         <div className="originals-bottom">
           <p>Recurring event formats designed as cultural assets—not one-off productions.</p>
           <div><span><b>06</b> repeatable modules</span><span><b>04</b> commercial rights</span><span><b>03</b> partner territories</span></div>
-          <button type="button" onClick={() => document.getElementById("collection")?.scrollIntoView({ behavior: "smooth" })}>Enter the format <span>↗</span></button>
         </div>
       </section>
 

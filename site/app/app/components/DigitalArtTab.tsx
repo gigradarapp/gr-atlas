@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { artworkCollection, artworkCollectionValue, artworkTotals } from "./digitalArtCollection";
 
 export default function DigitalArtTab() {
@@ -44,10 +45,9 @@ export default function DigitalArtTab() {
                 key={artwork.id}
                 onClick={() => setSelectedId(artwork.id)}
                 type="button"
-                role="listitem"
                 aria-pressed={isSelected}
               >
-                <img src={artwork.image} alt={`${artwork.title}, fictional collection artwork`} />
+                <Image src={artwork.image} alt={`${artwork.title}, fictional collection artwork`} fill sizes="(max-width: 768px) 58vw, 25vw" />
                 <span className="atlas-art-card-overlay" />
                 <span className="atlas-art-card-copy">
                   <small>{artwork.id}</small>
@@ -61,7 +61,7 @@ export default function DigitalArtTab() {
 
         <aside className="atlas-art-selected-work" aria-live="polite">
           <div className="atlas-art-selected-image">
-            <img src={selectedArtwork.image} alt={`${selectedArtwork.title}, fictional collection artwork`} />
+            <Image src={selectedArtwork.image} alt={`${selectedArtwork.title}, fictional collection artwork`} fill sizes="(max-width: 768px) 100vw, 60vw" />
             <div className="atlas-art-investor-count" aria-label={`${selectedArtwork.investors} investors`}>
               <strong>{selectedArtwork.investors}</strong>
               <span>investors</span>

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import OverviewTab from "./components/OverviewTab";
 import PartnershipsTab from "./components/PartnershipsTab";
 import OriginalsTab from "./components/OriginalsTab";
@@ -72,7 +73,7 @@ export default function AtlasDashboard() {
         <div className="atlas-sidebar-status">
           <div><span className="atlas-live-dot" /><b>Atlas agents online</b></div>
           <p>4 sources awaiting review</p>
-          <a href="/">← Back to landing</a>
+          <Link href="/">← Back to landing</Link>
         </div>
       </aside>
       {navOpen && <button className="atlas-nav-backdrop" type="button" aria-label="Close workspace navigation" onClick={() => setNavOpen(false)} />}
